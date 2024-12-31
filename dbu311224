@@ -1,0 +1,31 @@
+-- farm 
+coroutine.wrap(function() 
+    print("cargando el farm")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/VBallsYCUKER/theautoframe/819dc7aeb3b1e7c1a87ca0bc1f2c785b2b8206ea/monkeyfarm"))()
+end)()
+
+coroutine.wrap(function() 
+    local p = game.Players.LocalPlayer
+    local status = p.Status
+    
+    -- Verificamos si la carpeta 'Status' existe antes de continuar
+    if not status then
+        print("Carpeta 'Status' no encontrada. Saliendo del bucle.")
+        return -- Salir del coroutine si no se encuentra 'status'
+    end
+    
+    local Transformation = status.Transformation
+    local SelectedTransformation = status.SelectedTransformation
+    print(Transformation.Value)
+    
+    while true and task.wait() do
+        game.ReplicatedStorage.Package.Events.reb:InvokeServer()
+        
+        if (Transformation.Value~="Divine Rose Prominence") then
+            game.ReplicatedStorage.Package.Events.equipskill:InvokeServer("Divine Rose Prominence")
+            game.ReplicatedStorage.Package.Events.ta:InvokeServer()
+        else 
+            print("ya transformado en el rose")
+        end
+    end
+end)()
