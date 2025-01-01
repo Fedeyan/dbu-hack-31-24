@@ -21,7 +21,7 @@ coroutine.wrap(function()
     while true and task.wait() do
         game.ReplicatedStorage.Package.Events.reb:InvokeServer()
         
-        if (Transformation.Value~="Divine Rose Prominence") then
+        if (Transformation.Value =="") then
             game.ReplicatedStorage.Package.Events.equipskill:InvokeServer("Divine Rose Prominence")
             game.ReplicatedStorage.Package.Events.ta:InvokeServer()
         else 
